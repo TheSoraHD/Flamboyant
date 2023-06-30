@@ -8,7 +8,6 @@ public class PlayerActions : MonoBehaviour
     public Vector2 moveValue;
     private InputActions _inputActions;
 
-    // Start is called before the first frame update
     void Awake()
     {
         _inputActions = new InputActions();

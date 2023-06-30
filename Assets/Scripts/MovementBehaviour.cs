@@ -7,6 +7,16 @@ public class MovementBehaviour : MonoBehaviour
 {
     public float speed;
     public Vector3 direction;
+    private Rigidbody m_rb;
+
+    private void Start()
+    {
+        /*if (m_rb.TryGetComponent<Rigidbody>())
+        {
+            m_rb = null;
+        }*/
+    }
+
     public void MoveForward()
     {
         transform.position += transform.forward * Time.deltaTime * speed;
@@ -29,6 +39,16 @@ public class MovementBehaviour : MonoBehaviour
     public void Move(Vector3 dir)
     {
         transform.position += dir * Time.deltaTime * speed;
+    }
+
+    public void MoveRB()
+    {
+        m_rb.velocity = direction * speed;
+    }
+
+    public void MoveRB(Vector3 dir)
+    {
+        m_rb.velocity = dir * speed;
     }
 
     public void Move(Vector3 dir, float speed)
