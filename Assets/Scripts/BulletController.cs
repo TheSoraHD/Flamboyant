@@ -15,6 +15,6 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_movementBehaviour.Move();
+        //m_movementBehaviour.Move();
     }
 }

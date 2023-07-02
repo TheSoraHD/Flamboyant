@@ -15,7 +15,7 @@ public class ShootBehaviour : MonoBehaviour
             shot.transform.position = shootingPoint.position;
             shot.transform.rotation = shootingPoint.rotation;
             shot.SetActive(true);
-            shot.GetComponent<Rigidbody2D>().AddForce(dir);
+            shot.GetComponent<Rigidbody>().AddForce(dir);
         }
     }
 }
