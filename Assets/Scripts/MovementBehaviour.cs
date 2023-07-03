@@ -7,14 +7,14 @@ public class MovementBehaviour : MonoBehaviour
 {
     public float speed;
     public Vector3 direction;
+
+    private float m_auxspeed;
     private Rigidbody m_rb;
 
     private void Start()
     {
-        /*if (m_rb.TryGetComponent<Rigidbody>())
-        {
+        if (!TryGetComponent<Rigidbody>(out m_rb))
             m_rb = null;
-        }*/
     }
 
     public void MoveForward()
@@ -41,6 +41,11 @@ public class MovementBehaviour : MonoBehaviour
         transform.position += dir * Time.deltaTime * speed;
     }
 
+    public void Move(Vector3 dir, float speed)
+    {
+        transform.position += dir * Time.deltaTime * speed;
+    }
+
     public void MoveRB()
     {
         m_rb.velocity = direction * speed;
@@ -51,14 +56,30 @@ public class MovementBehaviour : MonoBehaviour
         m_rb.velocity = dir * speed;
     }
 
-    public void Move(Vector3 dir, float speed)
+    public void MoveRB(Vector3 dir, float speed)
     {
-        transform.position += dir * Time.deltaTime * speed;
+        m_rb.velocity = dir * speed;
     }
 
     public void Rotate(float rotationSpeed)
     {
         transform.RotateAround(transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+    }
+
+    public void StopMovement()
+    {
+        m_auxspeed = speed;
+        speed = 0;
+    }
+
+    public void RestoreMovement()
+    {
+        speed = m_auxspeed;
+    }
+
+    public void StopMovementRB()
+    {
+        m_rb.velocity = Vector3.zero;
     }
 
 }

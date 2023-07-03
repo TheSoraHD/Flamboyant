@@ -6,53 +6,54 @@ public class ShmupPlayerController : MonoBehaviour
 {
 
     public float rotation_speed;
+    public Material material;
 
-    private PlayerActions m_PlayerActions;
     private Animator m_Animator;
-    private MovementBehaviour m_MovementBehaviour;
-    private ScreenBehaviour m_ScreenBehaviour;
     private BulletPatternBehaviour m_BulletPatternBehaviour;
+    private ColorBehaviour m_ColorBehaviour;
+    private MovementBehaviour m_MovementBehaviour;
+    private PlayerActions m_PlayerActions;
+    private ScreenBehaviour m_ScreenBehaviour;
 
-    // Start is called before the first frame update
     void Start()
     {
         m_Animator = gameObject.GetComponent<Animator>();
-        m_MovementBehaviour = gameObject.GetComponent <MovementBehaviour>();
-        m_PlayerActions = GetComponent<PlayerActions>();
-        m_ScreenBehaviour = GetComponent<ScreenBehaviour>();
         m_BulletPatternBehaviour = GetComponent<BulletPatternBehaviour>();
+        m_ColorBehaviour = gameObject.GetComponent<ColorBehaviour>();
+        m_MovementBehaviour = gameObject.GetComponent <MovementBehaviour>();
+        m_PlayerActions = gameObject.GetComponent<PlayerActions>();
+        m_ScreenBehaviour = GetComponent<ScreenBehaviour>();
     }
 
-    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        MovementUpdateRB();
+    }
+
     void Update()
     {
-        MovementUpdate();
         ShootUpdate();
     }
 
-    void MovementUpdate()
+    void MovementUpdateRB()
     {
         if (m_PlayerActions.moveValue.y != 0)
         {
-            //if (m_ScreenBehaviour.CheckZPercentageMargin())
-            //{
-                m_MovementBehaviour.Move(-transform.forward * m_PlayerActions.moveValue.y);
-            //}
-            //m_Animator.SetInteger("State", 1);
+            //m_MovementBehaviour.MoveRB(-transform.forward * m_PlayerActions.moveValue.y);
+            m_MovementBehaviour.Move(-transform.forward * m_PlayerActions.moveValue.y);
         }
         if (m_PlayerActions.moveValue.x != 0)
         {
             if (m_ScreenBehaviour.CheckXPercentageMargin())
             {
+                //m_MovementBehaviour.MoveRB(-transform.right * m_PlayerActions.moveValue.x);
                 m_MovementBehaviour.Move(-transform.right * m_PlayerActions.moveValue.x);
             }
-            //m_Animator.SetInteger("State", 1);
         }
         if (m_PlayerActions.moveValue == Vector2.zero)
         {
-            //m_Animator.SetInteger("State", 0);
+            //m_MovementBehaviour.StopMovementRB();
         }
-        //transform.Rotation += Vector3(0f, Time.deltaTime * rotation_speed * _playerActions.moveValue, 0f);
     }
 
     void ShootUpdate()
