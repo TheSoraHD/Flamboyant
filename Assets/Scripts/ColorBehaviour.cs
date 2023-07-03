@@ -1,32 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ColorBehaviour : MonoBehaviour
 {
-    private MeshRenderer m_MeshRenderer;
+    public enum ColorEnum
+    {
+        RED,
+        GREEN,
+        BLUE,
+        PURPLE
+    };
 
+    public ColorEnum CurrentColor;
     public List<Material> mats = new List<Material>();
 
-    void Start()
+    private MeshRenderer m_MeshRenderer;
+
+    private void Start()
     {
-        m_MeshRenderer = gameObject.GetComponent<MeshRenderer>();
+        m_MeshRenderer = GetComponent<MeshRenderer>();
     }
 
     public void ChangeColor()
     {
-        m_MeshRenderer.material = mats[0];
+        ChangeColor(0);
     }
 
     public void ChangeColor(int id)
     {
         m_MeshRenderer.material = mats[id];
+        setCurrentColor(id);
     }
 
     public void ChangeColor(MeshRenderer mesh)
     {
-        setMeshRenderer(mesh);
-        ChangeColor();
+        ChangeColor(mesh, 0);
     }
 
     public void ChangeColor(MeshRenderer mesh, int id)
@@ -38,6 +48,11 @@ public class ColorBehaviour : MonoBehaviour
     private void setMeshRenderer(MeshRenderer mesh)
     {
         m_MeshRenderer = mesh;
+    }
+
+    private void setCurrentColor(int id)
+    {
+        CurrentColor = (ColorEnum)id;
     }
 
 }
