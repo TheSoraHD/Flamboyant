@@ -39,8 +39,9 @@ public class ShmupPlayerController : MonoBehaviour
     {
         if (m_PlayerActions.moveValue.y != 0)
         {
-            //m_MovementBehaviour.MoveRB(-transform.forward * m_PlayerActions.moveValue.y);
-            m_MovementBehaviour.Move(-transform.forward * m_PlayerActions.moveValue.y);
+            if (m_ScreenBehaviour.CheckYPercentageMargin(m_PlayerActions.moveValue.y))
+                //m_MovementBehaviour.MoveRB(-transform.forward * m_PlayerActions.moveValue.y);
+                m_MovementBehaviour.Move(-transform.forward * m_PlayerActions.moveValue.y);
         }
         if (m_PlayerActions.moveValue.x != 0)
         {
