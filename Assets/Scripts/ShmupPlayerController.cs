@@ -37,23 +37,27 @@ public class ShmupPlayerController : MonoBehaviour
 
     void MovementUpdateRB()
     {
+        Vector3 dir = new(0,0,0);
         if (m_PlayerActions.moveValue.y != 0)
         {
             if (m_ScreenBehaviour.CheckYPercentageMargin(m_PlayerActions.moveValue.y))
+                dir += -transform.forward * m_PlayerActions.moveValue.y;
                 //m_MovementBehaviour.MoveRB(-transform.forward * m_PlayerActions.moveValue.y);
-                m_MovementBehaviour.Move(-transform.forward * m_PlayerActions.moveValue.y);
+                //m_MovementBehaviour.Move(-transform.forward * m_PlayerActions.moveValue.y);
         }
         if (m_PlayerActions.moveValue.x != 0)
         {
             if (m_ScreenBehaviour.CheckXPercentageMargin(m_PlayerActions.moveValue.x))
             {
+                dir += -transform.right * m_PlayerActions.moveValue.x;
                 //m_MovementBehaviour.MoveRB(-transform.right * m_PlayerActions.moveValue.x);
-                m_MovementBehaviour.Move(-transform.right * m_PlayerActions.moveValue.x);
+                //m_MovementBehaviour.Move(-transform.right * m_PlayerActions.moveValue.x);
             }
         }
+        m_MovementBehaviour.MoveRB(dir);
         if (m_PlayerActions.moveValue == Vector2.zero)
         {
-            //m_MovementBehaviour.StopMovementRB();
+            m_MovementBehaviour.StopMovementRB();
         }
     }
 

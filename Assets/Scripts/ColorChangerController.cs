@@ -15,10 +15,17 @@ public class ColorChangerController : MonoBehaviour
     public ColorEnum ColorToChange;
 
     private ColorBehaviour m_colorBehaviour;
+    private MovementBehaviour m_movementBehaviour;
 
     private void Start()
     {
         m_colorBehaviour = GetComponent<ColorBehaviour>();
+        m_movementBehaviour = GetComponent<MovementBehaviour>();
+    }
+
+    private void Update()
+    {
+        m_movementBehaviour.MoveLocal();
     }
 
     private void OnTriggerEnter(Collider other)

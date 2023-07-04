@@ -30,9 +30,11 @@ public class BulletPatternBehaviour : MonoBehaviour
             Vector3 projectileVector = new Vector3(projectileDirXPosition, projectileDirYPosition, 0.0f);
             Vector3 projectileMoveDirection = projectileVector.normalized * projectileSpeed;
 
-            print("stemeeeen");
             //GameObject tmpObj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
-            GameObject tmpObj = PoolingManager.Instance.GetPooledObject();
+            GameObject tmpObj = PoolingManager.Instance.GetPooledObject(ProjectilePrefab.name);
+            print(tmpObj.name);
+            tmpObj.SetActive(true);
+            tmpObj.transform.position = new Vector3(transform.position.x + m_radius, transform.position.y , transform.position.z);
             tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x, 0, projectileMoveDirection.y);
 
             angle += angleStep;

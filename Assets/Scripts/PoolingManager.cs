@@ -5,7 +5,6 @@ using UnityEngine;
 using static UnityEditor.Progress;
 
 [Serializable]
-
 public class PooledItems
 {
     public string Name;
@@ -16,9 +15,11 @@ public class PooledItems
 public class PoolingManager : MonoBehaviour
 {
     [SerializeField]
+    private List<PooledItems> m_pooledLists = new List<PooledItems>();
+
     private Dictionary<string, List<GameObject>> m_items =
         new Dictionary<string, List<GameObject>>();
-    private List<PooledItems> m_pooledLists = new List<PooledItems>();
+
     private static PoolingManager m_instance;
     public static PoolingManager Instance
     {
@@ -47,7 +48,7 @@ public class PoolingManager : MonoBehaviour
         }
     }
 
-    public GameObject GetPooledObject()
+    public GameObject GetPooledObject(string name)
     {
         List<GameObject> tmp = m_items[name];
         for (int i = 0; i < tmp.Count; i++) {

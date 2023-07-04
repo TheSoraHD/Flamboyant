@@ -46,6 +46,21 @@ public class MovementBehaviour : MonoBehaviour
         transform.position += dir * Time.deltaTime * speed;
     }
 
+    public void MoveLocal()
+    {
+        transform.localPosition += direction * Time.deltaTime * speed;
+    }
+
+    public void MoveLocal(Vector3 dir)
+    {
+        transform.localPosition += dir * Time.deltaTime * speed;
+    }
+
+    public void MoveLocal(Vector3 dir, float speed)
+    {
+        transform.localPosition += dir * Time.deltaTime * speed;
+    }
+
     public void MoveRB()
     {
         m_rb.velocity = direction * speed;

@@ -9,7 +9,7 @@ public class ShootBehaviour : MonoBehaviour
 
     public void Shoot(Vector3 dir)
     {
-        GameObject shot = PoolingManager.Instance.GetPooledObject();
+        GameObject shot = PoolingManager.Instance.GetPooledObject(bullet.name);
         if (shot != null)
         {
             shot.transform.position = shootingPoint.position;
