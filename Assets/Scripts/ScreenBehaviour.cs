@@ -6,6 +6,7 @@ using UnityEngine;
 public class ScreenBehaviour : MonoBehaviour
 {
     public float percentage;
+    public float playerCalibration = 0.5f;
     public Camera cam;
     //CinemachineVirtualCamera cam;
 
@@ -15,14 +16,17 @@ public class ScreenBehaviour : MonoBehaviour
         //cam = GetComponent<Camera>();
     }
 
-    public bool CheckXPercentageMargin()
+    public bool CheckXPercentageMargin(float x)
     {
-        Vector3 viewPos = cam.WorldToViewportPoint(transform.position);
+        Vector3 viewPos = cam.WorldToViewportPoint(transform.GetComponent<Renderer>().bounds.center);
         print("uwux");
         print(viewPos.x);
         print(percentage);
-        if (viewPos.x < percentage || viewPos.x > percentage)
-            return true;
+        float halfScreen = percentage / 2.0f;
+        if (x < 0.0f && viewPos.x < playerCalibration + 0.5f - halfScreen)
+            return false;
+        else if (x > 0.0f && viewPos.x > playerCalibration + 0.5f + halfScreen)
+            return false;
         return true;
     }
     public bool CheckYPercentageMargin()
