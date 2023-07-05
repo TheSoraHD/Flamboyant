@@ -10,10 +10,12 @@ public class BulletPatternBehaviour : MonoBehaviour
     public GameObject ProjectilePrefab;
 
     private const float m_radius = 1.0f;
+    private ColorBehaviour m_ColorBehaviour;
     private ShootBehaviour m_ShootBehaviour;
 
     void Start()
     {
+        m_ColorBehaviour = GetComponent<ColorBehaviour>();
         m_ShootBehaviour = GetComponent<ShootBehaviour>();
     }
 
@@ -32,8 +34,11 @@ public class BulletPatternBehaviour : MonoBehaviour
 
             //GameObject tmpObj = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
             GameObject tmpObj = PoolingManager.Instance.GetPooledObject(ProjectilePrefab.name);
-            print(tmpObj.name);
             tmpObj.SetActive(true);
+            if (tmpObj.TryGetComponent<ColorBehaviour>(out ColorBehaviour color))
+            {
+                color.ChangeColor((int)m_ColorBehaviour.CurrentColor);
+            }
             tmpObj.transform.position = new Vector3(transform.position.x + m_radius, transform.position.y , transform.position.z);
             tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x, 0, projectileMoveDirection.y);
 

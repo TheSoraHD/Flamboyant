@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TreasureGameMainMenu.unity
+    guid: 1684bc101191cba409be0476db621736
+  - enabled: 1
+    path: Assets/Scenes/TreasureGameLevel1.unity
+    guid: 33d2a5004d7566247acc816fe2db81be
+  - enabled: 1
+    path: Assets/Scenes/TreasureGameLevel2.unity
+    guid: 94f3245d27ae8704296b462ed1f6e0cc
   m_configObjects: {}
