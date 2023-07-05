@@ -18,7 +18,7 @@ public class ColorBehaviour : MonoBehaviour
 
     private MeshRenderer m_MeshRenderer;
 
-    private void Start()
+    private void Awake()
     {
         m_MeshRenderer = GetComponent<MeshRenderer>();
     }

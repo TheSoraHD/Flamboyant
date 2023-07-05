@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 817976528685521066}
   - component: {fileID: 5227862578446724257}
   - component: {fileID: 1220377471005910839}
-  - component: {fileID: 1365564436495126665}
   - component: {fileID: 8641768798908349394}
   - component: {fileID: 4723716873517348172}
+  - component: {fileID: 4589922943038190824}
   - component: {fileID: 7055349424798896842}
   - component: {fileID: 2786876235980829193}
   - component: {fileID: -1322779901487442393}
@@ -112,27 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2c8c344103b894baa6bd5b50aed63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1365564436495126665
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2566813849653326393}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &8641768798908349394
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -183,6 +162,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &4589922943038190824
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2566813849653326393}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7055349424798896842
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -208,7 +208,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2786876235980829193
 MonoBehaviour:

@@ -6,7 +6,6 @@ public class ShmupPlayerController : MonoBehaviour
 {
 
     public float rotation_speed;
-    public Material material;
 
     private Animator m_Animator;
     private BulletPatternBehaviour m_BulletPatternBehaviour;
@@ -72,7 +71,7 @@ public class ShmupPlayerController : MonoBehaviour
     public void Shoot()
     {
         //m_Animator.SetTrigger("Shoot");
-        m_BulletPatternBehaviour.SpawnProjectile();
+        m_BulletPatternBehaviour.StraigthPattern(1.0f);
         //CreateBullet();
     }
 
