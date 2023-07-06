@@ -49,4 +49,14 @@ public class DestroyBehaviour : MonoBehaviour
             }
         }
     }
+
+
+    private void OnEnable()
+    {
+        if(selfDestroy)
+        {
+            StartDeactivation();
+        }
+    }
+
 }

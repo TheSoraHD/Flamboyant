@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7055349424798896842}
   - component: {fileID: 2786876235980829193}
   - component: {fileID: -1322779901487442393}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dccbb94030b69b46b8dbd0a5e608eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 1
 --- !u!114 &817976528685521066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FX: {fileID: 0}
-  secondsToDeactivate: 1
-  selfDestroy: 0
+  secondsToDeactivate: 2
+  selfDestroy: 1
 --- !u!114 &-1322779901487442393
 MonoBehaviour:
   m_ObjectHideFlags: 0
