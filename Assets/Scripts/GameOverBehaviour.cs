@@ -12,7 +12,7 @@ public class GameOverBehaviour : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetSceneByBuildIndex(0).buildIndex);
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
