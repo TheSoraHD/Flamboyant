@@ -71,7 +71,7 @@ public class ShmupPlayerController : MonoBehaviour
     public void Shoot()
     {
         //m_Animator.SetTrigger("Shoot");
-        m_BulletPatternBehaviour.StraigthPattern(1.0f);
+        m_BulletPatternBehaviour.Shoot();
         //CreateBullet();
     }
 

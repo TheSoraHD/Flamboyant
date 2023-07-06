@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Splines;
 
 public class ShmupLevelPlaneController : MonoBehaviour
 {
-
-    private MovementBehaviour m_movementBehaviour;
+    private SplineAnimate[] m_splineAnimate;
 
     private void Start()
     {
-        m_movementBehaviour = GetComponent<MovementBehaviour>();
+        m_splineAnimate = GetComponents<SplineAnimate>();
     }
 
     private void Update()
     {
-        m_movementBehaviour.Move();
+        if (m_splineAnimate[0].IsPlaying == false)
+        {
+            m_splineAnimate[1].Play();
+        }
     }
 
 }

@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class BulletPatternBehaviour : MonoBehaviour
 {
+    public enum BulletPatterns
+    {
+        Straigth,
+        Circle
+    };
+
+    public BulletPatterns ChosenPatterns;
 
     public int numberOfProjectiles = 8;
     public float projectileSpeed = 1.0f;
+    public float angleOffset = 0.0f;
+    public float xPosStep = 0.5f;
     public GameObject ProjectilePrefab;
 
     private const float m_radius = 1.5f;
@@ -19,7 +28,20 @@ public class BulletPatternBehaviour : MonoBehaviour
         m_ShootBehaviour = GetComponent<ShootBehaviour>();
     }
 
-    public void StraigthPattern(float xPosStep)
+    public void Shoot()
+    {
+        switch (ChosenPatterns)
+        {
+            case BulletPatterns.Straigth:
+                StraigthPattern();
+                break;
+            case BulletPatterns.Circle:
+                CirclePattern();
+                break;
+        }
+    }
+
+    public void StraigthPattern()
     {
         float xPos = -xPosStep / 2.0f;
         for (int i = 0; i < numberOfProjectiles; i++)
@@ -29,7 +51,7 @@ public class BulletPatternBehaviour : MonoBehaviour
         }
     }
 
-    public void CirclePattern(float angleOffset)
+    public void CirclePattern()
     {
         float angleStep = 360.0f / numberOfProjectiles;
         float angle = angleOffset;

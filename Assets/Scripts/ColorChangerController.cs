@@ -25,7 +25,10 @@ public class ColorChangerController : MonoBehaviour
 
     private void Update()
     {
-        m_movementBehaviour.MoveLocal();
+        if (m_movementBehaviour != null)
+        {
+            m_movementBehaviour.MoveLocal();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
