@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4395896515720384170}
   - component: {fileID: 817976528685521066}
   - component: {fileID: 5227862578446724257}
-  - component: {fileID: 1220377471005910839}
   - component: {fileID: 8641768798908349394}
   - component: {fileID: 4723716873517348172}
   - component: {fileID: 4589922943038190824}
@@ -71,7 +70,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2786876235980829193}
         m_TargetAssemblyTypeName: DestroyBehaviour, Assembly-CSharp
-        m_MethodName: StartDeactivation
+        m_MethodName: Deactivate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -100,18 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   direction: {x: 0, y: 0, z: 0}
---- !u!114 &1220377471005910839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2566813849653326393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f2c8c344103b894baa6bd5b50aed63d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &8641768798908349394
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -238,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentColor: 0
+  matID: 0
   mats:
   - {fileID: 2100000, guid: 2e7869fcad788e745bd2636c62f0bc40, type: 2}
   - {fileID: 2100000, guid: b0189f0afa7b2de4294b3754e72e3ea1, type: 2}

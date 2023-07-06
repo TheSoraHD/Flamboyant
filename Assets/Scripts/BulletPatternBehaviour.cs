@@ -71,6 +71,7 @@ public class BulletPatternBehaviour : MonoBehaviour
         Vector3 projectileMoveDirection = projectileVector.normalized * projectileSpeed;
 
         GameObject tmpObj = PoolingManager.Instance.GetPooledObject(ProjectilePrefab.name);
+        tmpObj.tag = tag;
         tmpObj.SetActive(true);
         if (tmpObj.TryGetComponent<ColorBehaviour>(out ColorBehaviour color))
         {

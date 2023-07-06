@@ -31,7 +31,7 @@ public class ShmupEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<ColorBehaviour>(out ColorBehaviour color))
+        if (other.CompareTag("Player") && other.TryGetComponent<ColorBehaviour>(out ColorBehaviour color))
         {
             ColorBehaviour.ColorEnum otherColor = color.CurrentColor; //we have to grab it before destroying/deactivating the object
             other.GetComponent<DestroyBehaviour>().StartDeactivation();

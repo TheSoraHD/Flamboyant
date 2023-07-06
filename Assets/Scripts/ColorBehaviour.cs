@@ -13,7 +13,8 @@ public class ColorBehaviour : MonoBehaviour
         PURPLE
     };
 
-    public ColorEnum CurrentColor;
+    public ColorEnum CurrentColor = ColorEnum.RED;
+    public int matID = 0;
     public List<Material> mats = new List<Material>();
 
     private MeshRenderer m_MeshRenderer;
@@ -25,7 +26,7 @@ public class ColorBehaviour : MonoBehaviour
 
     public void ChangeColor()
     {
-        ChangeColor(0);
+        ChangeColor((int)CurrentColor);
     }
 
     public void ChangeColor(int id)
