@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentColor: 0
+  matID: 0
   mats: []
 --- !u!114 &5247014688962289522
 MonoBehaviour:
@@ -166,6 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -2
+  rotationSpeed: 0
+  rotationZLimit: 0
   direction: {x: 1, y: 0, z: 0}
 --- !u!114 &891388633358512055
 MonoBehaviour:

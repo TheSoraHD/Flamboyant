@@ -24,7 +24,8 @@ public class DestroyBehaviour : MonoBehaviour
 
     public void StartDeactivation()
     {
-        StartCoroutine(DeactivateAfterSeconds());
+        if (this.gameObject.activeInHierarchy)
+            StartCoroutine(DeactivateAfterSeconds());
     }
 
     private IEnumerator DeactivateAfterSeconds()

@@ -5,8 +5,6 @@ using UnityEngine;
 public class ShmupPlayerController : MonoBehaviour
 {
 
-    public float rotation_speed;
-
     private Animator m_Animator;
     private BulletPatternBehaviour m_BulletPatternBehaviour;
     private ColorBehaviour m_ColorBehaviour;
@@ -18,7 +16,6 @@ public class ShmupPlayerController : MonoBehaviour
     {
         m_Animator = GetComponent<Animator>();
         m_BulletPatternBehaviour = GetComponent<BulletPatternBehaviour>();
-        m_ColorBehaviour = GetComponent<ColorBehaviour>();
         m_MovementBehaviour = GetComponent <MovementBehaviour>();
         m_PlayerActions = GetComponent<PlayerActions>();
         m_ScreenBehaviour = GetComponent<ScreenBehaviour>();
@@ -44,6 +41,7 @@ public class ShmupPlayerController : MonoBehaviour
         }
         if (m_PlayerActions.moveValue.x != 0)
         {
+            m_MovementBehaviour.RotateZ(m_PlayerActions.moveValue.x);
             if (m_ScreenBehaviour.CheckXPercentageMargin(m_PlayerActions.moveValue.x))
                 dir += -transform.right * m_PlayerActions.moveValue.x;
         }
@@ -66,4 +64,20 @@ public class ShmupPlayerController : MonoBehaviour
     {
         m_BulletPatternBehaviour.Shoot();
     }
+    /*
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy") && other.TryGetComponent<ColorBehaviour>(out ColorBehaviour color))
+        {
+            if (color.CurrentColor != m_colorBehaviour.CurrentColor)
+            {
+                m_healthBehaviour.Hurt(1);
+            }
+        }
+        else if (other.CompareTag("Obstacle"))
+        {
+            m_healthBehaviour.Hurt(1);
+        }
+    }
+    */
 }

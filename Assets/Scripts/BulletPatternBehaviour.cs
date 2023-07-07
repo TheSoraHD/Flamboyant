@@ -16,6 +16,8 @@ public class BulletPatternBehaviour : MonoBehaviour
     public float projectileSpeed = 1.0f;
     public float angleOffset = 0.0f;
     public float xPosStep = 0.5f;
+    public float cooldown = 0.3f;
+    private float currentCooldown = 0.0f;
     public GameObject ProjectilePrefab;
 
     private const float m_radius = 1.5f;
@@ -28,16 +30,24 @@ public class BulletPatternBehaviour : MonoBehaviour
         m_ShootBehaviour = GetComponent<ShootBehaviour>();
     }
 
+    void Update()
+    {
+        currentCooldown -= Time.deltaTime;
+    }
+
     public void Shoot()
     {
-        switch (ChosenPatterns)
-        {
-            case BulletPatterns.Straigth:
-                StraigthPattern();
-                break;
-            case BulletPatterns.Circle:
-                CirclePattern();
-                break;
+        if (currentCooldown < 0.0f) {
+            switch (ChosenPatterns)
+            {
+                case BulletPatterns.Straigth:
+                    StraigthPattern();
+                    break;
+                case BulletPatterns.Circle:
+                    CirclePattern();
+                    break;
+            }
+            currentCooldown = cooldown;
         }
     }
 

@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    private MovementBehaviour m_movementBehaviour;
+    private ColorBehaviour m_colorBehaviour;
+    private DestroyBehaviour m_destroyBehaviour;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        m_movementBehaviour = GetComponent<MovementBehaviour>();
+        m_colorBehaviour = GetComponent<ColorBehaviour>();
+        m_destroyBehaviour = GetComponent<DestroyBehaviour>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        //m_movementBehaviour.Move();
+        if (other.TryGetComponent<ColorBehaviour>(out ColorBehaviour color))
+        {
+            ColorBehaviour.ColorEnum otherColor = color.CurrentColor; //we have to grab it before destroying/deactivating the object
+            other.GetComponent<DestroyBehaviour>().StartDeactivation();
+            if (otherColor == m_colorBehaviour.CurrentColor)
+            {
+                m_destroyBehaviour.StartDeactivation();
+            }
+        }
     }
 }

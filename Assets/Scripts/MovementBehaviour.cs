@@ -6,6 +6,8 @@ using UnityEngine;
 public class MovementBehaviour : MonoBehaviour
 {
     public float speed;
+    public float rotationSpeed;
+    public float rotationZLimit;
     public Vector3 direction;
 
     private float m_auxspeed;
@@ -76,9 +78,15 @@ public class MovementBehaviour : MonoBehaviour
         m_rb.velocity = dir * speed;
     }
 
-    public void Rotate(float rotationSpeed)
+    public void Rotate()
     {
         transform.RotateAround(transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+    }
+
+    public void RotateZ(float moveValue)
+    {
+        if (moveValue > 0.0f && transform.rotation.z < rotationZLimit)
+            transform.RotateAround(transform.position, Vector3.forward, rotationSpeed * Time.deltaTime);
     }
 
     public void StopMovement()

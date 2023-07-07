@@ -36,7 +36,7 @@ public class PlatformerPlayerController : MonoBehaviour
         }
         if (m_playerActions.moveValue.x != 0)
         {
-            m_MovementBehaviour.Rotate(rotation_speed * m_playerActions.moveValue.x);
+            //m_MovementBehaviour.Rotate(rotation_speed * m_playerActions.moveValue.x);
         }
         if (m_playerActions.moveValue == Vector2.zero)
         {
