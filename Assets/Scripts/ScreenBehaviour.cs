@@ -8,13 +8,6 @@ public class ScreenBehaviour : MonoBehaviour
     public float percentageX, percentageY;
     public float playerCalibration = 0.0f;
     public Camera cam;
-    //CinemachineVirtualCamera cam;
-
-    private void Start()
-    {
-        //cam = GetComponent<CinemachineVirtualCamera>();
-        //cam = GetComponent<Camera>();
-    }
 
     public bool CheckXPercentageMargin(float x)
     {
@@ -26,6 +19,7 @@ public class ScreenBehaviour : MonoBehaviour
             return false;
         return true;
     }
+
     public bool CheckYPercentageMargin(float y)
     {
         Vector3 viewPos = cam.WorldToViewportPoint(transform.position);

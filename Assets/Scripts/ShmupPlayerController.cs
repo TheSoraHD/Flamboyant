@@ -16,11 +16,11 @@ public class ShmupPlayerController : MonoBehaviour
 
     void Start()
     {
-        m_Animator = gameObject.GetComponent<Animator>();
+        m_Animator = GetComponent<Animator>();
         m_BulletPatternBehaviour = GetComponent<BulletPatternBehaviour>();
-        m_ColorBehaviour = gameObject.GetComponent<ColorBehaviour>();
-        m_MovementBehaviour = gameObject.GetComponent <MovementBehaviour>();
-        m_PlayerActions = gameObject.GetComponent<PlayerActions>();
+        m_ColorBehaviour = GetComponent<ColorBehaviour>();
+        m_MovementBehaviour = GetComponent <MovementBehaviour>();
+        m_PlayerActions = GetComponent<PlayerActions>();
         m_ScreenBehaviour = GetComponent<ScreenBehaviour>();
     }
 
@@ -41,17 +41,11 @@ public class ShmupPlayerController : MonoBehaviour
         {
             if (m_ScreenBehaviour.CheckYPercentageMargin(m_PlayerActions.moveValue.y))
                 dir += -transform.forward * m_PlayerActions.moveValue.y;
-                //m_MovementBehaviour.MoveRB(-transform.forward * m_PlayerActions.moveValue.y);
-                //m_MovementBehaviour.Move(-transform.forward * m_PlayerActions.moveValue.y);
         }
         if (m_PlayerActions.moveValue.x != 0)
         {
             if (m_ScreenBehaviour.CheckXPercentageMargin(m_PlayerActions.moveValue.x))
-            {
                 dir += -transform.right * m_PlayerActions.moveValue.x;
-                //m_MovementBehaviour.MoveRB(-transform.right * m_PlayerActions.moveValue.x);
-                //m_MovementBehaviour.Move(-transform.right * m_PlayerActions.moveValue.x);
-            }
         }
         m_MovementBehaviour.MoveRB(dir);
         if (m_PlayerActions.moveValue == Vector2.zero)
@@ -70,13 +64,6 @@ public class ShmupPlayerController : MonoBehaviour
 
     public void Shoot()
     {
-        //m_Animator.SetTrigger("Shoot");
         m_BulletPatternBehaviour.Shoot();
-        //CreateBullet();
-    }
-
-    public void CreateBullet()
-    {
-        //m_ShootBehaviour.Shoot(transform.forward);
     }
 }
